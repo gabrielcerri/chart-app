@@ -13,7 +13,7 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 

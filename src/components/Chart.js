@@ -1,6 +1,7 @@
 import React from "react";
-import { Flex, Spinner, Text, Heading } from "@chakra-ui/react";
+import { Flex, Spinner, Text } from "@chakra-ui/react";
 import { getPopulation } from "../api/population";
+import { Bar } from "react-chartjs-2";
 
 export const Chart = () => {
   const [state, setState] = React.useState({
@@ -8,7 +9,9 @@ export const Chart = () => {
     countries: [],
     error: null,
   });
+
   const { loading, countries, error } = state;
+
   React.useEffect(() => {
     const doFetchCountries = async () => {
       setState({ loading: true, countries: [], error: null });
@@ -21,7 +24,42 @@ export const Chart = () => {
     };
     doFetchCountries();
   }, []);
-  console.log("countries", countries);
+
+  const dynamicLabels = countries.map((country) => {
+    return country.name;
+  });
+
+  const dynamicData = countries.map((country) => {
+    return country.population;
+  });
+
+  const genData = {
+    labels: dynamicLabels,
+    datasets: [
+      {
+        label: "Scale",
+        data: dynamicData,
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+
+        borderColor: "rgba(255, 99, 132, 1)",
+
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      xAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  };
+
   if (loading) {
     return (
       <Flex align="center" justify="center" h="97vh" w="100%">
@@ -33,22 +71,8 @@ export const Chart = () => {
   }
 
   return (
-    <Flex direction="row" wrap="wrap" p="3.5rem" justify="center">
-      {countries.map((country) => (
-        <Flex
-          m="0.5rem"
-          border="3px solid #c2c2c2"
-          direction="column"
-          borderRadius="8px"
-          p="1.5rem"
-          w="300px"
-        >
-          <Heading as="h3" size="lg" mb="1rem">
-            {country.name}
-          </Heading>
-          <Text>{country.population}</Text>
-        </Flex>
-      ))}
+    <Flex width="50%">
+      <Bar data={genData} options={options} />
     </Flex>
   );
 };
