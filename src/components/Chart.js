@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Spinner, Text } from "@chakra-ui/react";
 import { getPopulation } from "../api/population";
-import { Bar } from "react-chartjs-2";
+import { HorizontalBar } from "react-chartjs-2";
 
 export const Chart = () => {
   const [state, setState] = React.useState({
@@ -12,12 +12,14 @@ export const Chart = () => {
 
   const { loading, countries, error } = state;
 
+  console.log(getPopulation());
+
   React.useEffect(() => {
     const doFetchCountries = async () => {
       setState({ loading: true, countries: [], error: null });
       try {
         const results = await getPopulation();
-        setState({ loading: false, countries: [...results], error: null });
+        setState({ loading: false, countries: results, error: null });
       } catch (e) {
         setState({ loading: false, countries: [], error: e.message });
       }
@@ -33,11 +35,17 @@ export const Chart = () => {
     return country.population;
   });
 
+  const dynamicRegion = countries.slice(0, 1).map((country) => {
+    return country.regionalBlocs[0].acronym;
+  });
+
+  console.log(dynamicData);
+
   const genData = {
     labels: dynamicLabels,
     datasets: [
       {
-        label: "Scale",
+        label: "Population",
         data: dynamicData,
         backgroundColor: "rgba(255, 99, 132, 0.2)",
 
@@ -49,11 +57,28 @@ export const Chart = () => {
   };
 
   const options = {
+    responsive: true,
+    title: {
+      text: `Population of ${dynamicRegion} `,
+      display: true,
+    },
     scales: {
       xAxes: [
         {
+          type: "logarithmic",
           ticks: {
-            beginAtZero: true,
+            autoSkip: true,
+            display: false,
+          },
+          gridLines: {
+            display: false,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            display: false,
           },
         },
       ],
@@ -71,8 +96,8 @@ export const Chart = () => {
   }
 
   return (
-    <Flex width="50%">
-      <Bar data={genData} options={options} />
+    <Flex width="90%">
+      <HorizontalBar data={genData} options={options} />
     </Flex>
   );
 };
