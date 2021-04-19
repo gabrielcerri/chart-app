@@ -9,7 +9,7 @@ export const Header = () => {
       w="full"
       bg="black"
       direction="row"
-      justify="center"
+      justify="space-between"
       align="center"
       p="1rem 3rem"
     >
