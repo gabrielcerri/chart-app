@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 
 export const Home = () => {
   return (
@@ -8,11 +8,6 @@ export const Home = () => {
         {" "}
         🗺️ ¡Welcome to chart-country-population! 🗺️{" "}
       </Heading>
-
-      <Text justifyContent="center" marginTop="5">
-        {" "}
-        Click on the menu to see the charts by region
-      </Text>
     </Flex>
   );
 };
