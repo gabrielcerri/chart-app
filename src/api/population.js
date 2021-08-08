@@ -1,6 +1,6 @@
 export const getPopulation = async () => {
   const response = await window.fetch(
-    "https://restcountries.eu/rest/v2/regionalbloc/usan"
+    `https://restcountries.eu/rest/v2/region/americas`
   );
 
   if (!response.ok) {
