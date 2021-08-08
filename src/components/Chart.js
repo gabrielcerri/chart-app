@@ -36,7 +36,7 @@ export const Chart = () => {
   });
 
   const dynamicRegion = countries.slice(0, 1).map((country) => {
-    return country.regionalBlocs[0].acronym;
+    return country.region;
   });
 
   console.log(dynamicData);

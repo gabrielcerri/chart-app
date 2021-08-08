@@ -68,6 +68,9 @@ export const DrawerChart = () => {
                       <MenuItem onClick={() => history.push("/chart")}>
                         South America
                       </MenuItem>
+                      <MenuItem onClick={() => history.push("/chart")}>
+                        North America
+                      </MenuItem>
                     </MenuList>
                   </>
                 )}
