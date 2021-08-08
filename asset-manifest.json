@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/chart-app/static/css/main.49b3a936.chunk.css",
+    "main.js": "/chart-app/static/js/main.d311b168.chunk.js",
+    "main.js.map": "/chart-app/static/js/main.d311b168.chunk.js.map",
+    "runtime-main.js": "/chart-app/static/js/runtime-main.c83fbb5b.js",
+    "runtime-main.js.map": "/chart-app/static/js/runtime-main.c83fbb5b.js.map",
+    "static/js/2.65eed4a9.chunk.js": "/chart-app/static/js/2.65eed4a9.chunk.js",
+    "static/js/2.65eed4a9.chunk.js.map": "/chart-app/static/js/2.65eed4a9.chunk.js.map",
+    "index.html": "/chart-app/index.html",
+    "static/css/main.49b3a936.chunk.css.map": "/chart-app/static/css/main.49b3a936.chunk.css.map",
+    "static/js/2.65eed4a9.chunk.js.LICENSE.txt": "/chart-app/static/js/2.65eed4a9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c83fbb5b.js",
+    "static/js/2.65eed4a9.chunk.js",
+    "static/css/main.49b3a936.chunk.css",
+    "static/js/main.d311b168.chunk.js"
+  ]
+}
